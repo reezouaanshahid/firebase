@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import firebase from './Firebase';
-import { addDoc, collection, getFirestore,setDoc,doc } from 'firebase/firestore';
+import { addDoc, collection, getFirestore, setDoc, doc } from 'firebase/firestore';
 import app from './Firebase';
+import './index.css'; // Import CSS file with Tailwind CSS styles
 
 const Fire = () => {
   const [name, setName] = useState('');
@@ -15,8 +16,8 @@ const Fire = () => {
       const docRef = await setDoc(doc(collection(database, 'addproduct'), id), {
         name,
         id,
-        mail
-    });
+        mail,
+      });
       console.log('Document written with ID: ', docRef.id);
     } catch (error) {
       console.error('Error adding document: ', error);
@@ -34,17 +35,17 @@ const Fire = () => {
             placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-3 py-2 border rounded-md outline-none focus:border-blue-500"
+            className="input-field"
           />
         </div>
         <div className="mb-4">
           <input
             type="number"
             name="id"
-            placeholder="id"
+            placeholder="ID"
             value={id}
             onChange={(e) => setid(e.target.value)}
-            className="w-full px-3 py-2 border rounded-md outline-none focus:border-blue-500"
+            className="input-field"
           />
         </div>
         <div className="mb-4">
@@ -54,7 +55,7 @@ const Fire = () => {
             placeholder="Email"
             value={mail}
             onChange={(e) => setMail(e.target.value)}
-            className="w-full px-3 py-2 border rounded-md outline-none focus:border-blue-500"
+            className="input-field"
           />
         </div>
         <button
